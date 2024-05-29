@@ -23,7 +23,7 @@ const {
 } = ForecastIcons;
 
 export default function Forecast({ lat, lon }: ForecastProps) {
-  let dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const forecastRes = useAppSelector((state) => state.forecast);
 
   useEffect(() => {
@@ -59,11 +59,11 @@ export default function Forecast({ lat, lon }: ForecastProps) {
   };
 
   const nextDays = getNextDays();
-  let nextDayOne = nextDays[0];
-  let nextDayTwo = nextDays[1];
-  let nextDayThree = nextDays[2];
-  let nextDayFour = nextDays[3];
-  let nextDayFifth = nextDays[4];
+  const nextDayOne = nextDays[0];
+  const nextDayTwo = nextDays[1];
+  const nextDayThree = nextDays[2];
+  const nextDayFour = nextDays[3];
+  const nextDayFifth = nextDays[4];
 
   const weatherIconCondition = (dayIcon: string) => {
     switch (dayIcon) {
@@ -111,7 +111,7 @@ export default function Forecast({ lat, lon }: ForecastProps) {
   const kelvinToCelsius = (tempInKelvin: number) => tempInKelvin - 273.15;
 
   const uniqueFiveForecastDays: number[] = [];
-  let list = forecastRes?.data?.list;
+  const list = forecastRes?.data?.list;
 
   const sixDayForecast = (list ?? []).filter((forecast: Forecasts) => {
     const forecastDate = new Date(forecast.dt_txt).getDate();
@@ -122,38 +122,38 @@ export default function Forecast({ lat, lon }: ForecastProps) {
     return false;
   });
 
-  let fiveDaysForcast = sixDayForecast.slice(1);
+  const fiveDaysForcast = sixDayForecast.slice(1);
 
-  let firstDay = fiveDaysForcast[0];
-  let secondDay = fiveDaysForcast[1];
-  let thirdDay = fiveDaysForcast[2];
-  let forthDay = fiveDaysForcast[3];
-  let fifthDay = fiveDaysForcast[4];
+  const firstDay = fiveDaysForcast[0];
+  const secondDay = fiveDaysForcast[1];
+  const thirdDay = fiveDaysForcast[2];
+  const forthDay = fiveDaysForcast[3];
+  const fifthDay = fiveDaysForcast[4];
 
-  let firstDayIcon = firstDay?.weather?.[0]?.icon ?? "01d";
-  let firstDayMaxTemp = kelvinToCelsius(firstDay?.main?.temp_max);
-  let firstDayMinTemp = kelvinToCelsius(firstDay?.main?.temp_min);
-  let firstDayDescription = firstDay?.weather?.[0]?.description;
+  const firstDayIcon = firstDay?.weather?.[0]?.icon ?? "01d";
+  const firstDayMaxTemp = kelvinToCelsius(firstDay?.main?.temp_max);
+  const firstDayMinTemp = kelvinToCelsius(firstDay?.main?.temp_min);
+  const firstDayDescription = firstDay?.weather?.[0]?.description;
 
-  let secondDayIcon = secondDay?.weather?.[0]?.icon ?? "01d";
-  let secondDayMaxTemp = kelvinToCelsius(secondDay?.main?.temp_max);
-  let secondDayMinTemp = kelvinToCelsius(secondDay?.main?.temp_min);
-  let secondDayDescription = secondDay?.weather?.[0]?.description;
+  const secondDayIcon = secondDay?.weather?.[0]?.icon ?? "01d";
+  const secondDayMaxTemp = kelvinToCelsius(secondDay?.main?.temp_max);
+  const secondDayMinTemp = kelvinToCelsius(secondDay?.main?.temp_min);
+  const secondDayDescription = secondDay?.weather?.[0]?.description;
 
-  let thirdDayIcon = thirdDay?.weather?.[0]?.icon ?? "01d";
-  let thirdDayMaxTemp = kelvinToCelsius(thirdDay?.main?.temp_max);
-  let thirdDayMinTemp = kelvinToCelsius(thirdDay?.main?.temp_min);
-  let thirdDayDescription = thirdDay?.weather?.[0]?.description;
+  const thirdDayIcon = thirdDay?.weather?.[0]?.icon ?? "01d";
+  const thirdDayMaxTemp = kelvinToCelsius(thirdDay?.main?.temp_max);
+  const thirdDayMinTemp = kelvinToCelsius(thirdDay?.main?.temp_min);
+  const thirdDayDescription = thirdDay?.weather?.[0]?.description;
 
-  let forthDayIcon = forthDay?.weather?.[0]?.icon ?? "01d";
-  let forthDayMaxTemp = kelvinToCelsius(forthDay?.main?.temp_max);
-  let forthDayMinTemp = kelvinToCelsius(forthDay?.main?.temp_min);
-  let forthDayDescription = forthDay?.weather?.[0]?.description;
+  const forthDayIcon = forthDay?.weather?.[0]?.icon ?? "01d";
+  const forthDayMaxTemp = kelvinToCelsius(forthDay?.main?.temp_max);
+  const forthDayMinTemp = kelvinToCelsius(forthDay?.main?.temp_min);
+  const forthDayDescription = forthDay?.weather?.[0]?.description;
 
-  let fifthDayIcon = fifthDay?.weather?.[0]?.icon ?? "01d";
-  let fifthDayMaxTemp = kelvinToCelsius(fifthDay?.main?.temp_max);
-  let fifthDayMinTemp = kelvinToCelsius(fifthDay?.main?.temp_min);
-  let fifthDayDescription = fifthDay?.weather?.[0]?.description;
+  const fifthDayIcon = fifthDay?.weather?.[0]?.icon ?? "01d";
+  const fifthDayMaxTemp = kelvinToCelsius(fifthDay?.main?.temp_max);
+  const fifthDayMinTemp = kelvinToCelsius(fifthDay?.main?.temp_min);
+  const fifthDayDescription = fifthDay?.weather?.[0]?.description;
 
   return (
     <>
@@ -171,7 +171,7 @@ export default function Forecast({ lat, lon }: ForecastProps) {
             <div className="icon w-[70px] h-[67px] cursor-pointer">
               <img src={weatherIconCondition(firstDayIcon)} alt="first day" />
             </div>
-            <div className="desc  text-white text-center text-[12px] hidden md:block sm:text-[16px]">
+            <div className="desc  text-white text-center lg:text-[14px] hidden md:block sm:text-[16px]">
               {firstDayDescription}
             </div>
 
@@ -195,7 +195,7 @@ export default function Forecast({ lat, lon }: ForecastProps) {
             <div className="icon w-[70px] h-[67px] cursor-pointer">
               <img src={weatherIconCondition(secondDayIcon)} alt="second day" />
             </div>
-            <div className="desc text-white text-center text-[12px] hidden md:block sm:text-[16px]">
+            <div className="desc text-white text-center lg:text-[14px] hidden md:block sm:text-[16px]">
               {secondDayDescription}
             </div>
 
@@ -220,7 +220,7 @@ export default function Forecast({ lat, lon }: ForecastProps) {
               <img src={weatherIconCondition(thirdDayIcon)} alt="third day" />
             </div>
 
-            <div className="desc text-white text-center text-[12px] hidden md:block sm:text-[16px]">
+            <div className="desc text-white text-center lg:text-[14px] hidden md:block sm:text-[16px]">
               {thirdDayDescription}
             </div>
 
@@ -238,13 +238,13 @@ export default function Forecast({ lat, lon }: ForecastProps) {
             </div>
           </div>
           <div className="day w-[20%] border border-transparent flex flex-col  items-center">
-            <p className="font-bold	text-[#BFBFD4] text-[11px] sm:text-sm text-center ">
+            <p className="font-bold	text-[#BFBFD4] text-[11px]  sm:text-sm text-center ">
               {nextDayFour}
             </p>
             <div className="icon w-[70px] h-[67px] cursor-pointer">
               <img src={weatherIconCondition(forthDayIcon)} alt="forth day" />
             </div>
-            <div className="desc text-white text-center text-[12px] hidden md:block sm:text-[16px]">
+            <div className="desc text-white text-center lg:text-[14px] hidden md:block sm:text-[16px]">
               {forthDayDescription}
             </div>
 
@@ -269,7 +269,7 @@ export default function Forecast({ lat, lon }: ForecastProps) {
               <img src={weatherIconCondition(fifthDayIcon)} alt="fifth day" />
             </div>
 
-            <div className="desc text-white text-center text-[12px] hidden md:block sm:text-[16px]">
+            <div className="desc text-white text-center lg:text-[14px] hidden md:block sm:text-[16px]">
               {fifthDayDescription}
             </div>
 
